@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './categories_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,25 +10,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fudi',
-      home: MyHomePage(),
+      theme: ThemeData(
+         primarySwatch: Colors.pink,
+         accentColor: Colors.amber,
+         fontFamily: "Raleway",
+         textTheme: ThemeData.light().textTheme.copyWith(
+           headline6: TextStyle(
+            fontFamily: "RobotoCondensed",
+            fontWeight:FontWeight.w500,
+            fontSize: 20
+
+           ),
+         ),
+      ),
+      home: CategoriesScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Fudi'),
-      ),
-      body: Center(
-        child: Text("first page"),
-      ),
-    );
-  }
-}
