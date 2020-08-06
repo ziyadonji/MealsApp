@@ -1,4 +1,5 @@
-import 'package:MealsApp/meals_of_category_screen.dart';
+
+import '../screens/meals_of_category_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -21,9 +22,9 @@ class CategoryItem extends StatelessWidget {
     //   ),
     // );
 
-    Navigator.popAndPushNamed(
+    Navigator.pushNamed(
       ctx,
-      MealsOfCategory.routeName,
+      MealsOfCategoryScreen.routeName,
       arguments: {"title": title, "id": id},
     );
   }
