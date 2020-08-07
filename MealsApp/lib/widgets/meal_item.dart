@@ -1,4 +1,5 @@
 import 'package:MealsApp/models/mealDetails.dart';
+import 'package:MealsApp/screens/meal_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
@@ -8,8 +9,10 @@ class MealItem extends StatelessWidget {
   final Complexity complexity;
   final String imageUrl;
   final Affordability affordability;
+  final String id;
 
   MealItem({
+    @required this.id,
     @required this.imageUrl,
     @required this.title,
     @required this.duration,
@@ -33,32 +36,34 @@ class MealItem extends StatelessWidget {
         return "unknown";
     }
   }
- 
+  
 
-  //  String get affordabilityText{
-  //   switch(affordability){
-  //     case Affordability.cheap:
-  //       return "Affordable";
-  //       break;
-  //     case Affordability.pricey:
-  //       return "Pricey";
-  //       break;
-  //     case Affordability.luxurious:
-  //       return "Costly";
-  //       break;
-  //     default:
-  //       return "unknown";
-  //   }
-  // }
+   String get affordabilityText{
+    switch(affordability){
+      case Affordability.cheap:
+        return "Affordable";
+        break;
+      case Affordability.pricey:
+        return "Pricey";
+        break;
+      case Affordability.luxurious:
+        return "Costly";
+        break;
+      default:
+        return "unknown";
+    }
+  }
 
-  void selectedMeal(){
-  print(affordability);
+  void selectedMeal(context){
+  Navigator.pushNamed(context, MealDetailScreen.routeName,arguments:id );
 
   }
   @override
   Widget build(BuildContext context) {
     return InkWell(
-     onTap: selectedMeal,
+     onTap: (){
+       return selectedMeal(context);
+     },
      child: Card(
        margin: EdgeInsets.all(10),
        shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(15),),
@@ -127,7 +132,7 @@ class MealItem extends StatelessWidget {
                children: <Widget>[
                  Icon(Icons.attach_money),
                  SizedBox(width:6),
-                 //Text(affordabilityText)
+                 Text(affordabilityText)
                ],
              ),
              
