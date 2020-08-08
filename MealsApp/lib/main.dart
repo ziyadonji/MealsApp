@@ -1,3 +1,4 @@
+import 'package:MealsApp/screens/filters_screen.dart';
 import 'package:MealsApp/screens/meal_details_screen.dart';
 import 'package:MealsApp/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/":(context)=>TabsScreen(),
         MealDetailScreen.routeName:(context)=>MealDetailScreen(),
-        MealsOfCategoryScreen.routeName:(context)=>MealsOfCategoryScreen()
+        MealsOfCategoryScreen.routeName:(context)=>MealsOfCategoryScreen(),
+        FiltersScreen.routeName:(context)=>FiltersScreen()
       },
       //on unknown route is used like 404 fallback in web..if routes are not availabe this is shown
       onUnknownRoute: (setting){
