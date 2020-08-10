@@ -36,6 +36,7 @@ class MealDetailScreen extends StatelessWidget {
  
 
   bool isFavourite(String id){
+    
      return favouriteMeals.any((element) => element.id==id);
   }
  @override
