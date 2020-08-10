@@ -20,13 +20,13 @@ class _MealsOfCategoryScreenState extends State<MealsOfCategoryScreen> {
   String categoryTitle;
   List<MealDetails> mealsOfCategory;
 
-  void _removeMeal(String mealId){
+  // void _removeMeal(String mealId){
       
-    setState(() {
-      mealsOfCategory.removeWhere((element) => element.id==mealId);
-    });
+  //   setState(() {
+  //     mealsOfCategory.removeWhere((element) => element.id==mealId);
+  //   });
 
-  }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _MealsOfCategoryScreenState extends State<MealsOfCategoryScreen> {
         ),
         body: ListView.builder(
           itemBuilder: (context, index) {
-            return MealItem(removeItem: _removeMeal,
+            return MealItem(
               title: mealsOfCategory[index].title,
               duration: mealsOfCategory[index].duration,
               complexity: mealsOfCategory[index].complexity,
