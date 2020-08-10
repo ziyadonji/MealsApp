@@ -2,9 +2,13 @@ import 'package:MealsApp/models/mealDetails.dart';
 import 'package:flutter/material.dart';
 
 import '../models/mealDetails.dart';
-import '../dummy_data.dart';
+
 
 class MealDetailScreen extends StatelessWidget {
+  final Function toggleFavourite;
+  final List<MealDetails> favouriteMeals;
+  final List<MealDetails> _availableMeals;
+  MealDetailScreen(this._availableMeals,this.toggleFavourite,this.favouriteMeals);
   static const routeName = "/meals_of_category_screen/meal_details_screeen";
 
   Widget buildSectionTitle(BuildContext context, String heading) {
@@ -29,10 +33,16 @@ class MealDetailScreen extends StatelessWidget {
                       child: child
                     );
   }
-  @override
+ 
+
+  bool isFavourite(String id){
+     return favouriteMeals.any((element) => element.id==id);
+  }
+ @override
+
   Widget build(BuildContext context) {
     String mealId = ModalRoute.of(context).settings.arguments;
-    final MealDetails selectedMeal = DUMMY_MEALS.firstWhere((mealElement) {
+    final MealDetails selectedMeal = _availableMeals.firstWhere((mealElement) {
       return mealElement.id == mealId;
     });
     final appBar = AppBar(
@@ -41,6 +51,12 @@ class MealDetailScreen extends StatelessWidget {
     );
     return Scaffold(
         appBar: appBar,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(isFavourite(mealId)?Icons.star:Icons.star_border),
+          onPressed: (){
+            toggleFavourite(mealId);
+          },
+        ),
         body: 
             //Text("Ingredients",style:Theme.of(context).textTheme.headline5),
 
